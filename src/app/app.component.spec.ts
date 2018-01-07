@@ -29,4 +29,21 @@ describe('AppComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');
   }));
+
+
+  it('should add a + b ', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app.add(4, 5)).toEqual(9);
+    expect(app.add(-9, 3)).toEqual(-6);
+    expect(app.add(0, 0)).toEqual(0);
+  }));
+
+
+  it('should have a list element ul', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('a').textContent).toContain('Tour of Heroes');
+  }));
 });
