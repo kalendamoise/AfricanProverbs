@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Proverb } from './classes/proverb';
+import { ProverServiceService } from './services/prover-service.service';
 
 @Component({
   selector: 'app-root',
@@ -11,17 +12,11 @@ export class AppComponent {
   proverb: Proverb;
   proverbs: Proverb[] = [];
 
+  constructor(private proverbService: ProverServiceService){
+
+  }
+
   ngOnInit() {
-    this.proverb = new Proverb();
-    this.proverb.category = ['Wisdom'];
-    this.proverb.originalText = " Wisdom is like a baobab tree; no one individual can embrace it.";
-    this.proverb.englishTranslation = " Wisdom is like a baobab tree; no one individual can embrace it."
-    this.proverb.origin = "Akan";
-
-    this.proverbs.push(this.proverb);
-    this.proverbs.push(this.proverb);
-    this.proverbs.push(this.proverb);
-    this.proverbs.push(this.proverb);
-
+    this.proverbs = this.proverbService.getProvers();
   }
 }
